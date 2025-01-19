@@ -14,13 +14,15 @@ Steps in EDA:
 
 steps in Data Processing:
 1.data ingestion
-2.delete columns with fewer unique values. (if most of the values in a column is repeated , then it would lead to inaccuracy , right? )
+2.delete columns with fewer unique values. (if most of the values in a column is repeated , then it would lead to inaccuracy , right?)
 3.delete duplicate rows
 
 project steps:
 1.EDA
 2.data processing test
 3.Feature Engineering
+
+EDA:
 	1 : deals with cells like (143,234]
 	this cell cant be directly fed into model creation. we can only give numbers to it.
 
@@ -51,21 +53,55 @@ project steps:
 	there is more methods in dealing with missing values.
 
 	5 : dealing with outliers
-	box plot 
 
-preprocessing steps:
-	1. how individual variaables look like
-	2. what is the distribution
-	3. whata is the mean
-	4. what is the stndrd deviation
-	5. what is the corelation coefficiant
-	6. what is its corelattion with target variable
-	7. what is the outliers present
-	etc
+		5 pre requesties knowledge - remove outliers techniques:
+			two techniques:
+			-> trimming
+				just remove ouliers.
+			-> capping
+				set the ouliers as maximum allowed value or minimum allowedvalue.
+				like :
+					if lower value (value that is 3 standard deviation from mean) is 4 . then if there 2 in data set . then we set that 2 as 4.therefore outliers dealed.
+		5.1 check for gaussian columns(which follows guassian dirstribution (normal distribution))
 
-	1. histogram - to analyse dirstribution
-	2. boxplot - to find outliers
-	3. scatter plot to find relations
+		5.2 check for outliers:
+		<<-- DIFFERENT DISTRIBUTION DIFFERENT METHODS OF OUTLIER DETECTION-->>
+		########research about different distributions.
+		if gaussian ,
+			use z-score for outlier detection
+			( A Z-score measures how many standard deviations a data point is from the mean, helping identify outliers in a dataset. )
+			if data point is more than 3 standard deviation from mean , then its oulier.
+
+			[now removed outliers in gaussian distribution ] - move on to other distributions columns in our dataset to remove outliers in those
+
+		if not gaussian,
+			use box-plot for outlier detection
+				if not gaussian , it may be skewed distribution, so we check for that:
+				to identify skewed :
+					1> check whether if it is categorical data (we dont take outlier detection of a column of categorical data,(each column in categorical column doesnt make sense, it makes sense when combine - fyz))
+						so remove datas that is below 10 varieteies (remove caegorical data)
+					2> Identify skewed columns 
+					3> draw Box plot
+					4> trim data acording to this :
+						4.1> take iqr range
+						4.2> upper_limit = 75th_percentile + 1.5 * IQR
+						4.3> lower_limit = 25th_percentile - 1.5 * IQR
+						4.4> trim data that occurs outside the limits between upper limit and lower limit.
+						
+	6. check corelation among columns
+		like removing all columns which corelation with other columns in more than 80 percetage.
+
+		<[ RESEARCH ON CO-RELATION OF CATEGORICAL DATA ]>
+		<[ RESEARCH ON WHICH ARE THE COLUMN WHICH ARE SIGNIFICANT ENOUGH FOR MAKING A MODEL BETTER ]>
+		? : if p avalue is greater than threshold , that is an significant variable. those are selected as significant variables in a dataset , how????????, whats teh relation btwn them?
+		deal with constant columns if there is constant columns in significatn columns.
+		--> i dont understand anything on "regression_model.py" last part. 
+
+	
+
+###############<<<<<<<EDA COMPLETED>>>>>>>#####################
+
+		
 
 	
 
