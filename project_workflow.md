@@ -6,11 +6,16 @@ Steps for this Linear Regression Project:
 
 3 : Data Pre-Processing:
     3.1> Feature splitting and De-construction
-    3.2> Encoding categorical columns
-    3.3> Handle missing value
-        3.3.1> Remove columns that have many missing value 
-        3.3.2> Handle missing value on Numerical value 
-        3.3.3> Handle missing value on Categorical value
+    3.2> deal with constant columns
+    3.3> deal with columns that have few value
+    3.4> deal with duplicate rows
+    3.5> Handle missing value
+        3.5.1> Remove columns that have many missing value 
+        3.5.2> Handle missing value on Numerical value 
+        3.5.3> Handle missing value on Categorical value
+        (proceed below steps after EDA)
+    3.6> Encoding categorical columns
+    3.7> split features
 
 4 : EDA 
     4.1> Handle outliers 
@@ -34,4 +39,3 @@ Steps for this Linear Regression Project:
 8 : Model Optimization 
     8.1> Hyperparameter tuning 
     8.2> Validate optimized model performance
-
